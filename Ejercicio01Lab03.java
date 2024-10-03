@@ -43,26 +43,49 @@ public class Ejercicio01Lab03 {
        }
        //Método para mostrar todas las naves
     public static void mostrarNaves(Nave [] flota){
-        
+        for(Nave nave : flota){
+            System.out.println(nave.toString());
+        }
     }
 
     //Método para mostrar todas las naves de un nombre que se pide por teclado
     public static void mostrarPorNombre(Nave [] flota){
-        
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Ingrese nombre de la nave a buscar: ");
+        String naveBuscar=scan.next();
+        System.out.println("Naves encontradas con el nombre "+naveBuscar+" : ");
+        for(Nave nave : flota){
+            if(nave.getNombre().equals(naveBuscar)){
+                System.out.println(nave.toString());
+            }
+        }
     }
 
     //Método para mostrar todas las naves con un número de puntos inferior o igual
     //al número de puntos que se pide por teclado
     public static void mostrarPorPuntos(Nave [] flota){
-        
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Ingrese el numero max de puntos: ");
+        int maxPuntos=scan.nextInt();
+        System.out.println("Naves con puntos inferiores a "+maxPuntos);
+        for(Nave nave : flota){
+            if(nave.getPuntos()<=maxPuntos){
+                System.out.println(nave.toString());
+            }
+        }       
     }
 
     //Método que devuelve la Nave con mayor número de Puntos
     public static Nave mostrarMayorPuntos(Nave [] flota){
-        Nave Nave = null;
-        return Nave;
-        
+        Nave naveMaxPuntos=flota[0];
+        for(Nave nave : flota){
+            if(nave.getPuntos()>naveMaxPuntos.getPuntos()){
+                naveMaxPuntos=nave;
+            }
+        }   
+        return naveMaxPuntos;       
     }
+    
     //Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados
     //pero aleatoriamente desordenados
 

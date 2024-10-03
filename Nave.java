@@ -44,5 +44,14 @@ public class Nave {
             return puntos;
         }
         // Completar con otros métodos necesarios
+        public String toString(){
+            return "Nave{" +
+               "nombre= "+nombre+'\'' +
+               ", fila=" + fila +
+               ", columna='" + columna + '\'' +
+               ", estado=" + estado  +
+               ", puntos=" + puntos +
+               '}';
+        }
 }
 
