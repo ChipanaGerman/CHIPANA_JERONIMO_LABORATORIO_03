@@ -25,29 +25,30 @@ public class Ejercicio01Lab03 {
             est = sc.nextBoolean();
             System.out.print("Puntos: ");
             punt = sc.nextInt();
-
             misNaves[i] = new Nave(); //Se crea un objeto Nave y se asigna su referencia a misNaves
-
             misNaves[i].setNombre(nomb);
             misNaves[i].setFila(fil);
             misNaves[i].setColumna(col);
             misNaves[i].setEstado(est);
             misNaves[i].setPuntos(punt);
         }
-
         System.out.println("\nNaves creadas:");
         mostrarNaves(misNaves);
         mostrarPorNombre(misNaves);
         mostrarPorPuntos(misNaves);
-        System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
-       }
-       //Método para mostrar todas las naves
+        System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));        
+        Nave[] navesDesordenadas=desordenarNaves(misNaves);
+        System.out.println("Naves desordenadas: ");
+        for(Nave nave : navesDesordenadas){
+            System.out.println(nave.toString());
+        }
+    }
+    //Método para mostrar todas las naves
     public static void mostrarNaves(Nave [] flota){
         for(Nave nave : flota){
             System.out.println(nave.toString());
         }
     }
-
     //Método para mostrar todas las naves de un nombre que se pide por teclado
     public static void mostrarPorNombre(Nave [] flota){
         Scanner scan=new Scanner(System.in);
@@ -60,7 +61,6 @@ public class Ejercicio01Lab03 {
             }
         }
     }
-
     //Método para mostrar todas las naves con un número de puntos inferior o igual
     //al número de puntos que se pide por teclado
     public static void mostrarPorPuntos(Nave [] flota){
@@ -74,7 +74,6 @@ public class Ejercicio01Lab03 {
             }
         }       
     }
-
     //Método que devuelve la Nave con mayor número de Puntos
     public static Nave mostrarMayorPuntos(Nave [] flota){
         Nave naveMaxPuntos=flota[0];
@@ -84,11 +83,18 @@ public class Ejercicio01Lab03 {
             }
         }   
         return naveMaxPuntos;       
-    }
-    
+    }    
     //Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados
     //pero aleatoriamente desordenados
-
-        
-    
+    public static Nave[] desordenarNaves(Nave[] flota) {
+        for (int i=flota.length-1;i>0;i--) {
+            // Generar un número aleatorio entre 0 y i
+            int j=(int)(Math.random()*(i+1)); 
+            // Intercambiar flota[i] con flota[j]
+            Nave temp=flota[i];
+            flota[i]=flota[j];
+            flota[j]=temp;
+        }
+        return flota; // Devolver el arreglo desordenado
+    }  
 }
